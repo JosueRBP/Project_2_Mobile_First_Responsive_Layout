@@ -1,5 +1,5 @@
 /* JOSUE R BOSQUE POMALES */
-/* Last Update: June 13, 2022 */
+/* Last Update: July 18, 2022 */
 
 /**********************************************/
 /**************** GENERAL CSS *****************/
@@ -34,6 +34,7 @@ header {
 /**********************************************/
 /***************** HEADER CSS *****************/
 /**********************************************/
+
 #top h1 {
     margin: 5%;
     font-family: 'Nunito', sans-serif;
@@ -49,58 +50,69 @@ header {
 }
 
 .profile-pic {
+    width: 80%;
     max-width: 290px;
     height: auto;
     margin-top: 10%;
 }
 
 .bio {
-    width: 85%;
     margin: 5% auto 10%;
-    font-size: 1.15rem;
     color: #999;
+    line-height: 1.5rem;
 }
 
 /**********************************************/
 /************** MAIN CONTENT CSS **************/
 /**********************************************/
 
-#portfolio {
+#portfolio, #skills {
     margin: 0 auto;
     background-color: rgb(213, 239, 255);
-    font-size: 1.2rem;
+}
+
+h4, h3 {
+    font-family: 'Merriweather', serif;
+    color: rgb(0, 146, 156);
 }
 
 .centered-title {
     margin: 0;
     padding: 10%;
-    font-family: 'Nunito', sans-serif;
-    font-size: 1.5rem;
     text-transform: uppercase;
-    color: lightseagreen
+}
+
+.portfolio .container {
+    display:flex; 
+    flex-wrap: wrap;
 }
 
 .item img {
     width: 90%;
+    margin-bottom: 5%;
 }
 
 .item p {
-    margin: 5%;
+    margin: 6%;
     padding-bottom: 10%;
     line-height: 1.25;
 }
 
 #skills {
-    background-color: rgb(213, 239, 255);
+    padding: 0 0 10% 0;
+}
+
+#skills ul {
+    display:flex; 
+    flex-wrap: wrap;
 }
 
 .skill-list {
     margin: 2.5%;
     padding-top: 25px;
-    width: 30%;
+    width: 45%;
     height: 50px;
     font-size: 1.25rem;
-    display: inline-block;
     color: aliceblue;
     background-color: lightseagreen;
     border-radius: 10px;
@@ -123,7 +135,6 @@ footer {
 #contact p {
     margin: 0 auto 5%;
     color: #777;
-    font-size: 1.15rem;
     line-height: 1.5;
 }
 
@@ -131,22 +142,28 @@ hr {
     margin-top: 20%;
 }
 
+.footer-nav {
+    display:flex; 
+    flex-flow: row;
+    font-weight: bold;
+}
+
 .student-name {
-    margin: 10% auto;
-    float: left;
+    width: 50%;
+    margin: 10% 0;
+    text-align: left;
 }
 
 .menu-footer {
-    margin: 10% auto;
+    width: 50%;
+    margin: 10% 0;
     text-transform: uppercase;
-    font-weight: bold;
-    float: right;
+    text-align: right;
 }
 
 .nav {
     display: none;
 }
-
 
 /**********************************************/
 /*************** MEDIA QUERIES ****************/
@@ -154,21 +171,19 @@ hr {
 
 @media (min-width: 768px) {
 
+    /***************** FLEXBOX *****************/
+    .student-info, .top-header ul, #portfolio, .menu-footer, .nav {
+        display:flex; 
+    }
+
     /***************** HEADER *****************/
+    
     .menu-header {
         width: 20%;
         background-color: transparent;
-        display: inline-block;
-    }
-
-    .student-info {
-        /* To Change the order of .bio and .profile-pic */
-        display:flex; 
-        flex-flow: row;
     }
 
     .profile-pic, .bio {
-        display: inline-block;
         margin: 5% auto 10%;
         vertical-align: top;
     }
@@ -176,6 +191,7 @@ hr {
     .bio {
         width: 55%;
         text-align: left;
+        font-size: 1.15rem;
         line-height: 1.5;
     }
     
@@ -184,14 +200,39 @@ hr {
     }
     
     /************** MAIN CONTENT **************/
+
+    #portfolio {
+        flex-direction: column;
+    }
+
     .centered-title {
         padding: 10%;
     }
 
+    .container {
+        margin: 0 auto;
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+        
+    }
+
+    .item p {
+        font-size: 1.1rem;
+    }
+
+    .item img {
+        width: 95%;
+    }
+    
     .item {
-        display: inline-block;
-        width: 45%;
+        width: 50%;
         vertical-align: top;
+    }
+
+    #skills .centered-title {
+        padding: 5% 0 10%;
+        margin-top: 5%;
     }
 
     .skill-list {
@@ -202,24 +243,31 @@ hr {
     /***************** FOOTER *****************/
 
     #contact p {
-        margin: 0 10% 5%;
+        margin: 0 12% 5%;
         font-size: 1.25rem;
     }
 
+    .student-name {
+        width: 35%;
+    }
+
+    .menu-footer, .nav {
+        justify-content: end;
+    }
+
     .menu-footer {
-        width: 60%;
-        text-align: right;
+        width: 65%;
     }
 
     .nav {
-        display: inline-block;
+        flex-direction: row;
         width: 20%;
     }
-
-    .pad {
-        padding-right: 5%;
-    }
     
+    .pad {
+        padding-right: 5% ;
+    }
+
     .back-to-top {
         display: none;
     }
@@ -233,6 +281,7 @@ hr {
     }
 
 }
+
 
 @media (min-width: 1024px) {
 
@@ -257,10 +306,14 @@ hr {
 
     .top-header ul {
         width: 69%;
-        margin: auto 2.5%;
+        margin: auto 0;
         text-align: right;
     }
    
+    .menu-header {
+        justify-content: end;
+    }
+
     .top-pad {
         padding-right: 5%;
     }
@@ -275,36 +328,46 @@ hr {
     }
 
     .bio {
-        font-size: 1.25rem;
+        font-size: 1.3rem;
     }
 
     /************** MAIN CONTENT **************/
 
-    .centered-title {
-        font-size: 1.25rem;
-        padding: 7%;
+    #portfolio, #skills {
+        width: 95%;
+    }
+
+    .container {
+        width: 95%;
     }
 
     .item {
-        width: 30%;
+        width: 33.33%;
     }
 
     .item img {
         width: 95%;
     }
 
+    .item p {
+        margin: 5.5%;
+        font-size: 1rem;
+    }
+
     .skill-list {
         margin: 2.5%;
-        width: 15%;
+        width: 20%;
     }
 
     /***************** FOOTER *****************/
 
     #contact p {
-        font-size: 1.4rem;
-        margin: 0 20% 2.5%;
+        font-size: 1.3rem;
+        width: 60%;
+        margin: 0 auto 2%;
     }
 
-    
-
+    #contact .note {
+        margin-bottom: 5%;
+    }
 }
